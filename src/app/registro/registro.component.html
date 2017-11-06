@@ -1,0 +1,59 @@
+<h1>SignUp</h1>
+<div class="container">
+  <div class="col-md-offset-4 col-md-4">
+
+
+    <form  #registroForm="ngForm" (ngSubmit)="onSubmit()" >
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" [(ngModel)]="user.email" class="form-control input-sm" name="email" id="email" required>
+      </div>
+
+      <div class="form-group">
+        <label for="name">Nombre</label>
+        <input type="text" [(ngModel)]="user.name" class="form-control input-sm" name="name" id="name" required>
+      </div>
+
+      <div class="form-group">
+        <label for="sex">Sexo</label>
+        <select [(ngModel)]="user.sex" id="sex" class="form-control input-sm" name="sex" required>
+          <option *ngFor="let i of sex" [ngValue]="i">{{i.value}}</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="city">Ciudad</label>
+        <input type="text" [(ngModel)]="user.city" class="form-control input-sm" name="city" id="city">
+      </div>
+
+
+      <div class="form-group">
+        <label for="birthday">Mi cumpleaños</label>
+        <input type="date" [(ngModel)]="user.birthday" class="form-control input-sm" name="birthday" id="birthday" required>
+      </div>
+
+      <div class="form-group">
+        <label for="orientation">Busco</label>
+        <select [(ngModel)]="user.orientation" id="orientation" name="orientation" class="form-control input-sm" required>
+          <option *ngFor="let i of orientation" [ngValue]="i">{{i.value}}</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="password">Contraseña</label>
+        <input type="password" [(ngModel)]="user.password" class="form-control input-sm" name="password" id="password" required>
+      </div>
+
+      <div class="form-group">
+        <label for="imageProfile">Imagen de perfil (puedes añadirla más tarde)</label>
+        <input type="file" [(ngModel)]="user.imageProfile" class="form-control input-sm" name="imageProfile" id="imageProfile">
+      </div>
+
+      <button type="submit" class="btn btn-success" >Registrate</button>
+    </form>
+
+    <br>
+    <li align="center"><a routerLink="/registrofacebook">Quieres registrarte con facebook?</a></li>
+    </div>
+  </div>
+
