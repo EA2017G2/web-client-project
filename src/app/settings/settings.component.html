@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="col-md-offset-4 col-md-4">
+
+
+
+
+
+
+
+
+
+<div class="form-group">
+  <label for="orientation">Looking for</label>
+  <select [(ngModel)]="user.orientation" id="orientation" name="orientation" class="form-control input-sm" required>
+    <option *ngFor="let i of orientation" [ngValue]="i">{{i.value}}</option>
+  </select>
+</div>
+
+    <button type="submit" class="btn btn-success" >Apply changes</button>
+
+
+  </div>
+</div>

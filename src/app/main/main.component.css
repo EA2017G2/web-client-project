@@ -15,9 +15,9 @@ body, html {
 }
 
 
-/* Third image (Contact)*/
+/* Third image (Contact) */
 .bgimg-3 {
-  background-image: url('../../assets/img/loveindex.jpg');
+  background-image: url('../../assets/img/lovemain.jpg');
   min-height: 900px;
 }
 

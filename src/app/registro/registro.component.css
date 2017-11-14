@@ -15,11 +15,6 @@ body, html {
 }
 
 
-/* Third image (Contact)*/
-.bgimg-3 {
-  background-image: url('../../assets/img/loveindex.jpg');
-  min-height: 900px;
-}
 
 .w3-wide {letter-spacing: 10px;}
 .w3-hover-opacity {cursor: pointer;}
