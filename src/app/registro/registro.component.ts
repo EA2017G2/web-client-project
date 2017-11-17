@@ -1,14 +1,16 @@
 import { Component } from '@angular/core';
 import { Http} from '@angular/http';
 import 'rxjs/add/operator/map';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-registro',
   templateUrl: './registro.component.html'
 })
 export class RegistroComponent {
-  tocken: any;
-  confirm: any;
+  responsejson: any;
+  token: any;
+  response: any;
   user: {
     email,
     name,
@@ -20,16 +22,16 @@ export class RegistroComponent {
     imageProfile
   }
   sex = [
-    {id: 1, value: 'hombre'},
-    {id: 2, value: 'mujer'},
-    {id: 3, value: 'otro'}
+    {value: 'hombre'},
+    {value: 'mujer'},
+    {value: 'otro'}
   ];
   orientation = [
-    {id: 1, value: 'hombres'},
-    {id: 2, value: 'mujeres'},
-    {id: 3, value: 'ambos'}
+    {value: 'hombres'},
+    {value: 'mujeres'},
+    {value: 'ambos'}
   ];
-  constructor (private http: Http) {
+  constructor (private http: Http, private router: Router) {
     console.log('Hello user');
     this.user = {
       'email': '',
@@ -43,12 +45,18 @@ export class RegistroComponent {
     };
   }
   onSubmit() {
-    this.http.post('http://localhost:3000/api/signUp', this.user).subscribe((resp => {
-      this.confirm = resp;
-      this.tocken = resp; // .tocken;
-      console.log(this.user);
-      console.log(this.tocken);
+    this.user.orientation = this.user.orientation.value;
+    this.user.sex = this.user.sex.value;
+    console.log(this.user);
+    this.http.post('http://localhost:3000/api/signup', this.user).subscribe((res => {
+      this.response = res.json();
+      console.log(this.response);
+      if (this.response.message2 === 0) {
+        this.token = this.response.token;
+        this.router.navigate(['/main'], { queryParams: { token: this.token } });
+      } else {
+        console.log('Ha habido un error al registrarse');
+      }
     }));
-    window.location.replace('/?cal=' + this.tocken);
   }
 }

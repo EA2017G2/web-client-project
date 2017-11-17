@@ -35,4 +35,10 @@
     <br>
     <li align="center"><a routerLink="/loginfacebook">Quieres loguearte con facebook?</a></li>
 </div>
+  <div style="color:#FF0000;font-size:20px;padding-top:5px">
+    <label *ngIf="this.mensaje === 'Contraseña incorrecta'">INVALID PASSWORD</label>
+    <label *ngIf="this.mensaje === 'No existe el usuario'">INVALID USERNAME</label>
+  </div>
+</div>
+  </body>
 </div>
