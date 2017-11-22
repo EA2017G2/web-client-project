@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { Http} from '@angular/http';
+import {Component} from '@angular/core';
+import {Http} from '@angular/http';
 import 'rxjs/add/operator/map';
 import {Router} from '@angular/router';
 
@@ -31,7 +31,8 @@ export class RegistroComponent {
     {value: 'mujeres'},
     {value: 'ambos'}
   ];
-  constructor (private http: Http, private router: Router) {
+
+  constructor(private http: Http, private router: Router) {
     console.log('Hello user');
     this.user = {
       'email': '',
@@ -44,19 +45,19 @@ export class RegistroComponent {
       'imageProfile': ''
     };
   }
+
   onSubmit() {
     this.user.orientation = this.user.orientation.value;
     this.user.sex = this.user.sex.value;
     console.log(this.user);
-    this.http.post('http://localhost:3000/api/signup', this.user).subscribe((res => {
+    this.http.post('http://localhost:3000/api/signup', this.user).subscribe(res => {
       this.response = res.json();
       console.log(this.response);
-      if (this.response.message2 === 0) {
-        this.token = this.response.token;
-        this.router.navigate(['/main'], { queryParams: { token: this.token } });
-      } else {
-        console.log('Ha habido un error al registrarse');
-      }
-    }));
+      this.token = this.response.token;
+      this.router.navigate(['/main'], {queryParams: {token: this.token}});
+    }, error => {
+      console.log('Ha habido un error al registrarse:' + error);
+      alert(error);
+    });
   }
 }
