@@ -15,10 +15,12 @@ import {MainComponent} from './main/main.component';
 import {RegistrofacebookComponent} from './registrofacebook/registrofacebook.component';
 import {AboutComponent} from './about/about.component';
 import { FormsModule } from '@angular/forms';
+import {ForgetPasswordComponent} from "./forgetPassword/forgetPassword.component";
 const appRoutes: Routes = [
   {path: 'index', component: IndexComponent},
   {path: 'play', component: PlayComponent},
   {path: 'login', component: LoginComponent},
+  {path: 'forgetpassword', component: ForgetPasswordComponent},
   {path: 'settings', component: SettingsComponent},
   {path: 'chat', component: ChatComponent},
   {path: 'loginfacebook', component: LoginfacebookComponent},
@@ -37,6 +39,7 @@ const appRoutes: Routes = [
     IndexComponent,
     ProfileComponent,
     LoginComponent,
+    ForgetPasswordComponent,
     LoginfacebookComponent,
     RegistroComponent,
     RegistrofacebookComponent,

@@ -22,7 +22,7 @@ export class LoginComponent {
     };
   }
   onSubmit() {
-    this.http.post('http://localhost:3000/api/signin', this.user).subscribe((resp => {
+    this.http.post('http://localhost:3000/api/signin', this.user).subscribe(resp => {
       this.response = resp.json(); // .tocken;
       this.mensaje = resp.json().message;
       if (this.response.message === 0) {
@@ -31,7 +31,10 @@ export class LoginComponent {
       } else {
         console.log(this.response.message);
       }
-    }));
+    }, error => {
+      console.log('Ha habido un error al autenticarse:' + error);
+      alert(error.json().message);
+    });
 
   }
 
