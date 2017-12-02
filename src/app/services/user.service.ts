@@ -29,11 +29,26 @@ export class UserService {
   }
 
   register(user: User): Observable<User> {
-    console.log(user);
+    console.log('data: ', user);
     const url = `${this.apiURL}/signup`;
-    console.log(url)
+    console.log(url);
+    console.log('headers', this.headers);
+/*
+    this.us = new User();
+    this.us.email = 'email13';
+    this.us.name = 'name';
+    this.us.token = 'token';
+    this.us.password = 'password';
+    this.us.birthday = new Date();
+    this.us.city = 'city';
+    this.us.imageProfile = null;
+    this.us.orientation = 'both';
+    this.us.sex = 'sex';*/
+
+    console.log('this.user', user);
+
     return this.http.post<User>(url, user, {headers: this.headers})
-      .catch(this.handleError);
+      .catch(this.handleError) ;
   }
 
 

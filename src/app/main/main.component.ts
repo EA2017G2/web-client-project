@@ -18,9 +18,9 @@ export class MainComponent {
       .queryParams
       .subscribe(params => {
         // Defaults to 0 if no query param provided.
-        this.token = +params['token'] || 0;
+      //  this.token = +params['token'] || 0;
       });
-    console.log(this.token);
+   // console.log('Min Component con Token', this.token);
   }
 
   ngOnDestroy() {

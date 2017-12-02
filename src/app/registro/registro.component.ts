@@ -43,20 +43,7 @@ export class RegistroComponent implements OnInit {
               private fb: FormBuilder) {
    // console.log('Hello user');
     this.createForm();
-    /*this.users = {
-      'email': '',
-      'name': '',
-      'sex': '',
-      'city': '',
-      'birthday': '',
-      'orientation': '',
-      'password': '',
-      'imageProfile': ''
-    };*/
-   /* this.aux = {
-      'password2': ''
-    };*/
-  }
+    }
 
   ngOnInit(): void {
     console.log('inside register component');
@@ -83,36 +70,18 @@ export class RegistroComponent implements OnInit {
     if (this.prodForm.value.password === this.prodForm.value.password2) {
       // this.user.orientation = this.user.orientation.value;
       // this.user.sex = this.user.sex.value;
-      console.log(this.prodForm.value);
+      console.log('!!!!!!!!!!!!!!!!!!onSubmit - Sign Up!!!!', this.prodForm.value);
       this.userService.register(this.prodForm.value).subscribe(res => {
         // this.response = res;
-          console.log('Res: ' + res);
-        this.user.token = res;
-        console.log(this.user.token);
-        localStorage.setItem('token', this.user.token);
-        this.router.navigate(['/main'], {queryParams: {token: this.user.token}});
+          console.log('Res: ' + res.token);
+        localStorage.setItem('token', res.token);
+        this.router.navigate(['/main'], {queryParams: {token: res.token}});
       }, error => {
-        console.log('Ha habido un error al registrarse:' + error);
+       console.log('Ha habido un error al registrarse:' + error);
       });
     } else {
       alert('Las contraseñas no coinciden');
     }
       }
 
-      /*this.http.post('http://localhost:3000/api/signup', this.user).subscribe(response => {
-      console.log('dentro de funcion POST');
-       // this.response = res;
-      //  console.log(this.response);
-        this.token = this.response.token;
-        console.log(this.token);
-        localStorage.setItem('token', this.token);
-        this.router.navigate(['/main'], {queryParams: {token: this.token}});
-      }, error => {
-        console.log('Ha habido un error al registrarse:' + error);
-       console.log(error.message);
-      });
-    } else {
-      alert('Las contraseñas no coinciden');
-    }
-    */
 }

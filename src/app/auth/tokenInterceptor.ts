@@ -10,9 +10,15 @@ export class TokenInterceptor implements HttpInterceptor {
 
    intercept(request: HttpRequest<any>, next: HttpHandler):
   Observable<HttpEvent<any>> {
+
+    console.log('INTERCEPT!!!!!! ');
     // Get the auth header from the service
-    const authHeader = this.auth.getToken();
+    let authHeader = this.auth.getToken();
+    console.log('authHeader', authHeader);
      // Clone the request to add the new header
+     if (authHeader === null) {
+        authHeader = 'MAGIC_TOKEN';
+     }
      const authReq = request.clone({
        headers: request.headers.set('Authorization', authHeader)
      });
@@ -24,6 +30,7 @@ export class TokenInterceptor implements HttpInterceptor {
       });*/
     // change the URL and replace 'http://' with 'https://'
     // const secureReq = request.clone({url: request.url.replace('http://', 'https://')});
+     console.log('authReq: ', authReq);
     return next.handle(authReq);
    }
 
