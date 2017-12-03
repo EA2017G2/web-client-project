@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {Routes, RouterModule} from '@angular/router';
 import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
@@ -19,7 +20,6 @@ import {RegistroComponent} from './registro/registro.component';
 import {MainComponent} from './main/main.component';
 import {RegistrofacebookComponent} from './registrofacebook/registrofacebook.component';
 import {AboutComponent} from './about/about.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {ForgetPasswordComponent} from './forgetPassword/forgetPassword.component';
 import { UserService } from './services/user.service';
 

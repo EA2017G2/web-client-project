@@ -8,9 +8,6 @@ import 'rxjs/add/operator/catch';
 
 import {User} from '../user';
 
-/*const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-};*/
 
 @Injectable()
 export class UserService {
@@ -33,8 +30,7 @@ export class UserService {
     const url = `${this.apiURL}/signup`;
     console.log(url);
     console.log('headers', this.headers);
-/*
-    this.us = new User();
+/*  this.us = new User();
     this.us.email = 'email13';
     this.us.name = 'name';
     this.us.token = 'token';
@@ -49,6 +45,14 @@ export class UserService {
 
     return this.http.post<User>(url, user, {headers: this.headers})
       .catch(this.handleError) ;
+  }
+  login(user: User): Observable<User> {
+    const url = `${this.apiURL}/signin`;
+    console.log(url);
+    console.log('headers', this.headers);
+    console.log('this.user', user);
+    return this.http.post<User>(url, user, {headers: this.headers})
+      .catch(this.handleError);
   }
 
 

@@ -1,4 +1,4 @@
-<meta charset="UTF-8">
+<!--<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-</head>
+</head>-->
 
 <h1 class="w3-xxlarge w3-text-black w3-wide" align="center">SignUp</h1>
 <div class="container">
@@ -17,11 +17,17 @@
        <label class="center-block">Email
          <input class="form-control" formControlName="email" required>
        </label>
+       <div *ngIf = "prodForm.touched && prodForm.invalid">
+         <div *ngIf="prodForm.controls['email'].errors" class="alert alert-danger"> Email is required </div>
+       </div>
      </div>
      <div class="form-group">
        <label class="center-block">Name
          <input class="form-control" formControlName="name" required>
        </label>
+       <div *ngIf = "prodForm.invalid && prodForm.touched">
+         <div *ngIf="prodForm.controls['name'].errors" class="alert alert-danger"> Name is required </div>
+       </div>
      </div>
      <div class="form-group">
        <label class="center-block">Gender
@@ -39,6 +45,9 @@
        <label class="center-block">Birthday
          <input type="date" class="form-control" formControlName="birthday" required>
        </label>
+       <div *ngIf = "prodForm.touched && prodForm.invalid">
+         <div *ngIf="prodForm.controls['birthday'].errors" class="alert alert-danger"> Birthday is required </div>
+       </div>
      </div>
      <div class="form-group">
        <label class="center-block">Find
@@ -49,13 +58,19 @@
      </div>
      <div class="form-group">
        <label class="center-block">Password
-         <input class="form-control" formControlName="password" required>
+         <input type="password" class="form-control" formControlName="password" required>
        </label>
+       <div *ngIf = "prodForm.touched && prodForm.invalid">
+         <div *ngIf="prodForm.controls['password'].errors" class="alert alert-danger"> Password is required </div>
+       </div>
      </div>
      <div class="form-group">
        <label class="center-block">Confirm your password
-         <input class="form-control" formControlName="password2" required>
+         <input type="password" class="form-control" formControlName="password2" required>
        </label>
+       <div *ngIf = "prodForm.touched && prodForm.invalid">
+         <div *ngIf="prodForm.controls['password2'].errors" class="alert alert-danger"> Confirm is required </div>
+       </div>
      </div>
      <div class="form-group">
        <label class="center-block">Your photo

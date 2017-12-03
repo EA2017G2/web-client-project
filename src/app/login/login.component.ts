@@ -1,27 +1,35 @@
 import { Component } from '@angular/core';
-import { Http, Response } from '@angular/http';
+import {HttpClient} from '@angular/common/http';
 import {Router} from '@angular/router';
+import {User} from '../user';
+import { UserService} from '../services/user.service';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html'
 })
 export class LoginComponent {
-  response: any;
-  token: any;
-  mensaje: any;
-  user: {
-    email,
-    password
-  };
+  user: User;
 
-  constructor (private http: Http, private router: Router) {
+  constructor (private http: HttpClient, private router: Router, private userService: UserService) {
     console.log('Hello user');
-    this.user = {
+    /*this.user = {
       'email': '',
       'password': ''
-    };
+    };*/
+    this.user = new User();
   }
+  submitted = false;
   onSubmit() {
+    this.submitted = true;
+    this.userService.login(this.user).subscribe( res => {
+      console.log('Res: ' + res.token);
+      localStorage.setItem('token', res.token);
+      this.router.navigate(['/main'], {queryParams: {token: res.token}});
+    }, error => {
+      console.log('Ha habido un error en el login:' + error);
+    });
+    /*
     this.http.post('http://localhost:3000/api/signin', this.user).subscribe(resp => {
       this.response = resp.json(); // .tocken;
       this.mensaje = resp.json().message;
@@ -35,7 +43,7 @@ export class LoginComponent {
       console.log('Ha habido un error al autenticarse:' + error);
       alert(error.json().message);
     });
-
+*/
   }
 
 }

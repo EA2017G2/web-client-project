@@ -9,16 +9,14 @@ import {User} from '../user';
 
 @Component({
   selector: 'app-registro',
-  templateUrl: './registro.component.html'
+  templateUrl: './registro.component.html',
+  styleUrls: ['./registro.component.css']
 })
 
 
 export class RegistroComponent implements OnInit {
   user: User;
   prodForm: FormGroup;
-
-  responsejson: any;
-  response: any;
 
   /*user: {
     email,
@@ -38,8 +36,8 @@ export class RegistroComponent implements OnInit {
   orientation = [
     'hombres', 'mujeres', 'ambos'];
 
-  constructor(private http: HttpClient, private router: Router,
-              private authService: AuthService, private userService: UserService,
+  constructor(private router: Router,
+              private userService: UserService,
               private fb: FormBuilder) {
    // console.log('Hello user');
     this.createForm();
@@ -68,11 +66,8 @@ export class RegistroComponent implements OnInit {
   }
   onSubmit() {
     if (this.prodForm.value.password === this.prodForm.value.password2) {
-      // this.user.orientation = this.user.orientation.value;
-      // this.user.sex = this.user.sex.value;
       console.log('!!!!!!!!!!!!!!!!!!onSubmit - Sign Up!!!!', this.prodForm.value);
       this.userService.register(this.prodForm.value).subscribe(res => {
-        // this.response = res;
           console.log('Res: ' + res.token);
         localStorage.setItem('token', res.token);
         this.router.navigate(['/main'], {queryParams: {token: res.token}});
