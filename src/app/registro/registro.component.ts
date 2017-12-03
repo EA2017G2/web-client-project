@@ -1,17 +1,24 @@
-import {Component} from '@angular/core';
-import {Http} from '@angular/http';
+import {Component, OnInit} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
 import 'rxjs/add/operator/map';
 import {Router} from '@angular/router';
+import {AuthService } from '../auth/authService';
+import { UserService } from '../services/user.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {User} from '../user';
 
 @Component({
   selector: 'app-registro',
-  templateUrl: './registro.component.html'
+  templateUrl: './registro.component.html',
+  styleUrls: ['./registro.component.css']
 })
-export class RegistroComponent {
-  responsejson: any;
-  token: any;
-  response: any;
-  user: {
+
+
+export class RegistroComponent implements OnInit {
+  user: User;
+  prodForm: FormGroup;
+
+  /*user: {
     email,
     name,
     sex,
@@ -20,55 +27,56 @@ export class RegistroComponent {
     orientation,
     password,
     imageProfile
-  }
-  aux: {
+  }*/
+  /*aux: {
     password2
-  }
+  }*/
   sex = [
-    {value: 'hombre'},
-    {value: 'mujer'},
-    {value: 'otro'}
-  ];
+    'hombre', 'mujer', 'otro'];
   orientation = [
-    {value: 'hombres'},
-    {value: 'mujeres'},
-    {value: 'ambos'}
-  ];
+    'hombres', 'mujeres', 'ambos'];
 
-  constructor(private http: Http, private router: Router) {
-    console.log('Hello user');
-    this.user = {
-      'email': '',
-      'name': '',
-      'sex': '',
-      'city': '',
-      'birthday': '',
-      'orientation': '',
-      'password': '',
-      'imageProfile': ''
-    };
-    this.aux = {
-      'password2': ''
-    };
+  constructor(private router: Router,
+              private userService: UserService,
+              private fb: FormBuilder) {
+   // console.log('Hello user');
+    this.createForm();
+    }
+
+  ngOnInit(): void {
+    console.log('inside register component');
   }
 
+ /* getUsers(): void {
+    this.userService.getUsers()
+      .subscribe(users => user = users); // paasa el array emitido al callback q modificara la propiedad del componente
+  }*/
+  createForm() {
+    this.prodForm = this.fb.group({
+      email: ['', Validators.required],
+      name : ['', Validators.required ],
+      birthday: ['', Validators.required],
+      password: ['', Validators.required],
+      password2: ['', Validators.required],
+      sex: '',
+      city: '',
+      orientation: '',
+      imageProfile: '',
+    });
+  }
   onSubmit() {
-    if (this.user.password === this.aux.password2) {
-      this.user.orientation = this.user.orientation.value;
-      this.user.sex = this.user.sex.value;
-      console.log(this.user);
-      this.http.post('http://localhost:3000/api/signup', this.user).subscribe(res => {
-        this.response = res.json();
-        console.log(this.response);
-        this.token = this.response.token;
-        this.router.navigate(['/main'], {queryParams: {token: this.token}});
+    if (this.prodForm.value.password === this.prodForm.value.password2) {
+      console.log('!!!!!!!!!!!!!!!!!!onSubmit - Sign Up!!!!', this.prodForm.value);
+      this.userService.register(this.prodForm.value).subscribe(res => {
+          console.log('Res: ' + res.token);
+        localStorage.setItem('token', res.token);
+        this.router.navigate(['/main'], {queryParams: {token: res.token}});
       }, error => {
-        console.log('Ha habido un error al registrarse:' + error);
-        alert(error.json().message);
+       console.log('Ha habido un error al registrarse:' + error);
       });
     } else {
       alert('Las contraseñas no coinciden');
     }
+      }
 
-  }
 }
