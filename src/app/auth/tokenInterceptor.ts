@@ -11,17 +11,20 @@ export class TokenInterceptor implements HttpInterceptor {
    intercept(request: HttpRequest<any>, next: HttpHandler):
   Observable<HttpEvent<any>> {
 
-    console.log('INTERCEPT!!!!!! ');
+   // console.log('INTERCEPT!!!!!! ');
     // Get the auth header from the service
     let authHeader = this.auth.getToken();
-    console.log('authHeader', authHeader);
+   // console.log('authHeader', authHeader);
 
     if (authHeader === null) {
         authHeader = 'MAGIC_TOKEN';
      }
      // Clone the request to add the new header
      const authReq = request.clone({
-       headers: request.headers.set('Authorization', authHeader)
+       setHeaders: {
+         Authorization: `Bearer ${authHeader}`
+       }
+       // headers: request.headers.set('Authorization', authHeader)
      });
      // Pass on the cloned request instead of the original request.
      /* const dupRequest = request.clone({

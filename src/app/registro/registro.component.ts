@@ -68,7 +68,7 @@ export class RegistroComponent implements OnInit {
     if (this.prodForm.value.password === this.prodForm.value.password2) {
       console.log('!!!!!!!!!!!!!!!!!!onSubmit - Sign Up!!!!', this.prodForm.value);
       this.userService.register(this.prodForm.value).subscribe(res => {
-          console.log('Res: ' + res.token);
+         // console.log('Res: ' + res.token);
         localStorage.setItem('token', res.token);
         this.router.navigate(['/main'], {queryParams: {token: res.token}});
       }, error => {

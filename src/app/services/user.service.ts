@@ -54,7 +54,11 @@ export class UserService {
   profile(): Observable<User> {
     const url = `${this.apiURL}/profile`;
     console.log(url);
-    return this.http.get(url)
+    console.log('headerProfile1:' + this.headers);
+    return this.http.get(url, {headers: this.headers})
+      .map(res => {
+        console.log('headerProfile2:' + this.headers);
+      })
       .catch(this.handleError);
   }
 
