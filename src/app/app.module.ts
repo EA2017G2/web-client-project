@@ -4,7 +4,7 @@ import {Routes, RouterModule} from '@angular/router';
 import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import {IndexComponent} from './index/index.component';
-import {PlayComponent} from './play/play.component';
+import {PlayComponent} from './play/play.component'
 import {SettingsComponent} from './settings/settings.component';
 import {LoginComponent} from './login/login.component';
 import {ChatComponent} from './chat/chat.component';
@@ -15,7 +15,7 @@ import {MainComponent} from './main/main.component';
 import {RegistrofacebookComponent} from './registrofacebook/registrofacebook.component';
 import {AboutComponent} from './about/about.component';
 import { FormsModule } from '@angular/forms';
-import {ForgetPasswordComponent} from "./forgetPassword/forgetPassword.component";
+import {ForgetPasswordComponent} from './forgetPassword/forgetPassword.component';
 const appRoutes: Routes = [
   {path: 'index', component: IndexComponent},
   {path: 'play', component: PlayComponent},
