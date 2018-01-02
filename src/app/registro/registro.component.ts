@@ -5,7 +5,7 @@ import {Router} from '@angular/router';
 import {AuthService } from '../auth/authService';
 import { UserService } from '../services/user.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import {User} from '../../../../ionic-app-project/src/pages/user';
+import {User} from '../user';
 
 @Component({
   selector: 'app-registro',
@@ -79,7 +79,4 @@ export class RegistroComponent implements OnInit {
     }
       }
 
-      registroFacebook(){
-
-      }
 }

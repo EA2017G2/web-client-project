@@ -4,7 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {Routes, RouterModule} from '@angular/router';
 import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
-import { FacebookModule } from 'ngx-facebook';
+
 import { AppComponent } from './app.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptor } from './auth/tokenInterceptor';
@@ -15,8 +15,10 @@ import {SettingsComponent} from './settings/settings.component';
 import {LoginComponent} from './login/login.component';
 import {ChatComponent} from './chat/chat.component';
 import {ProfileComponent} from './profile/profile.component';
+import {LoginfacebookComponent} from './loginfacebook/loginfacebook.component';
 import {RegistroComponent} from './registro/registro.component';
 import {MainComponent} from './main/main.component';
+import {RegistrofacebookComponent} from './registrofacebook/registrofacebook.component';
 import {AboutComponent} from './about/about.component';
 import {ForgetPasswordComponent} from './forgetPassword/forgetPassword.component';
 import { UserService } from './services/user.service';
@@ -28,8 +30,10 @@ const appRoutes: Routes = [
   {path: 'forgetpassword', component: ForgetPasswordComponent},
   {path: 'settings', component: SettingsComponent},
   {path: 'chat', component: ChatComponent},
+  {path: 'loginfacebook', component: LoginfacebookComponent},
   {path: 'registro', component: RegistroComponent},
   {path: 'profile', component: ProfileComponent},
+  {path: 'registrofacebook', component: RegistrofacebookComponent},
   {path: 'about', component: AboutComponent},
   {path: 'main', component: MainComponent}
 ]
@@ -43,7 +47,9 @@ const appRoutes: Routes = [
     ProfileComponent,
     LoginComponent,
     ForgetPasswordComponent,
+    LoginfacebookComponent,
     RegistroComponent,
+    RegistrofacebookComponent,
     MainComponent,
     AboutComponent
   ],
@@ -52,8 +58,7 @@ const appRoutes: Routes = [
     FormsModule,
     RouterModule.forRoot(appRoutes),
     HttpClientModule,
-    ReactiveFormsModule,
-    FacebookModule.forRoot()
+    ReactiveFormsModule
 
   ],
   providers: [
