@@ -3,6 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {Router} from '@angular/router';
 import {User} from '../../../../ionic-app-project/src/pages/user';
 import { UserService} from '../services/user.service';
+import { FacebookService, InitParams, LoginResponse } from 'ngx-facebook';
 
 @Component({
   selector: 'app-login',
@@ -11,8 +12,14 @@ import { UserService} from '../services/user.service';
 export class LoginComponent {
   user: User;
 
-  constructor (private http: HttpClient, private router: Router, private userService: UserService) {
+  constructor (private http: HttpClient, private router: Router, private userService: UserService, private fb: FacebookService) {
     console.log('Hello user');
+    let initParams: InitParams = {
+      appId: '141583893225829',
+      xfbml: true,
+      version: 'v2.8'
+    };
+    fb.init(initParams);
     /*this.user = {
       'email': '',
       'password': ''
@@ -29,6 +36,7 @@ export class LoginComponent {
     }, error => {
       console.log('Ha habido un error en el login:' + error);
     });
+
     /*
     this.http.post('http://localhost:3000/api/signin', this.user).subscribe(resp => {
       this.response = resp.json(); // .tocken;
@@ -44,6 +52,18 @@ export class LoginComponent {
       alert(error.json().message);
     });
 */
+  }
+
+  loginFacebook() {
+      this.fb.login()
+        .then((response: LoginResponse) => {
+
+          console.log(response);
+       //   localStorage.setItem('token', response.token);
+        //  this.router.navigate(['/main'], {queryParams: {token: response.token}});
+        }
+      )
+      .catch((error: any) => console.error(error));
   }
 
 }
