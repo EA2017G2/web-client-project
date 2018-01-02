@@ -1,4 +1,4 @@
-<meta charset="UTF-8">
+<!--<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
@@ -7,70 +7,137 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-</head>
+</head>-->
 
 <h1 class="w3-xxlarge w3-text-black w3-wide" align="center">SignUp</h1>
 <div class="container">
   <div class="col-md-offset-4 col-md-4">
-
-
-    <form  #registroForm="ngForm" (ngSubmit)="onSubmit()" >
-      <div class="form-group">
-        <label for="email">Email</label>
-        <input type="email" [(ngModel)]="user.email" class="form-control input-sm" name="email" id="email" required>
-      </div>
-
-      <div class="form-group">
-        <label for="name">Nombre</label>
-        <input type="text" [(ngModel)]="user.name" class="form-control input-sm" name="name" id="name" required>
-      </div>
-
-      <div class="form-group">
-        <label for="sex">Sexo</label>
-        <select [(ngModel)]="user.sex" id="sex" class="form-control input-sm" name="sex" required>
-          <option *ngFor="let i of sex" [ngValue]="i">{{i.value}}</option>
-        </select>
-      </div>
-
-      <div class="form-group">
-        <label for="city">Ciudad</label>
-        <input type="text" [(ngModel)]="user.city" class="form-control input-sm" name="city" id="city">
-      </div>
-
-
-      <div class="form-group">
-        <label for="birthday">Fecha de nacimiento</label>
-        <input type="date" [(ngModel)]="user.birthday" class="form-control input-sm" name="birthday" id="birthday" required>
-      </div>
-
-      <div class="form-group">
-        <label for="orientation">Busco</label>
-        <select [(ngModel)]="user.orientation" id="orientation" name="orientation" class="form-control input-sm" required>
-          <option *ngFor="let i of orientation" [ngValue]="i">{{i.value}}</option>
-        </select>
-      </div>
-
-
-      <div class="form-group">
-        <label for="password">Contraseña</label>
-        <input type="password" [(ngModel)]="user.password" class="form-control input-sm" name="password" id="password" required>
-      </div>
-
-      <div class="form-group">
-        <label for="password">Confirmar Contraseña</label>
-        <input type="password" [(ngModel)]="aux.password2" class="form-control input-sm" name="password2" id="password2" required>
-      </div>
-
-      <div class="form-group">
-        <label for="imageProfile">Imagen de perfil (puedes añadirla más tarde)</label>
-        <input type="file" [(ngModel)]="user.imageProfile" class="form-control input-sm" name="imageProfile" id="imageProfile">
-      </div>
-
-      <button type="submit" class="btn btn-success" >Registrate</button>
-    </form>
-
+   <form [formGroup]="prodForm" (ngSubmit)="onSubmit()" novalidate>
+     <div class="form-group">
+       <label class="center-block">Email
+         <input class="form-control" formControlName="email" required>
+       </label>
+       <div *ngIf = "prodForm.touched && prodForm.invalid">
+         <div *ngIf="prodForm.controls['email'].errors" class="alert alert-danger"> Email is required </div>
+       </div>
+     </div>
+     <div class="form-group">
+       <label class="center-block">Name
+         <input class="form-control" formControlName="name" required>
+       </label>
+       <div *ngIf = "prodForm.invalid && prodForm.touched">
+         <div *ngIf="prodForm.controls['name'].errors" class="alert alert-danger"> Name is required </div>
+       </div>
+     </div>
+     <div class="form-group">
+       <label class="center-block">Gender
+         <select class="form-control" formControlName="sex">
+           <option *ngFor="let se of sex" [value]="se">{{se}}</option>
+         </select>
+       </label>
+     </div>
+     <div class="form-group">
+       <label class="center-block">City
+         <input class="form-control" formControlName="city">
+       </label>
+     </div>
+     <div class="form-group">
+       <label class="center-block">Birthday
+         <input type="date" class="form-control" formControlName="birthday" required>
+       </label>
+       <div *ngIf = "prodForm.touched && prodForm.invalid">
+         <div *ngIf="prodForm.controls['birthday'].errors" class="alert alert-danger"> Birthday is required </div>
+       </div>
+     </div>
+     <div class="form-group">
+       <label class="center-block">Find
+         <select class="form-control" formControlName="orientation">
+           <option *ngFor="let orien of orientation" [value]="orien">{{orien}}</option>
+         </select>
+       </label>
+     </div>
+     <div class="form-group">
+       <label class="center-block">Password
+         <input type="password" class="form-control" formControlName="password" required>
+       </label>
+       <div *ngIf = "prodForm.touched && prodForm.invalid">
+         <div *ngIf="prodForm.controls['password'].errors" class="alert alert-danger"> Password is required </div>
+       </div>
+     </div>
+     <div class="form-group">
+       <label class="center-block">Confirm your password
+         <input type="password" class="form-control" formControlName="password2" required>
+       </label>
+       <div *ngIf = "prodForm.touched && prodForm.invalid">
+         <div *ngIf="prodForm.controls['password2'].errors" class="alert alert-danger"> Confirm is required </div>
+       </div>
+     </div>
+     <div class="form-group">
+       <label class="center-block">Your photo
+         <input type="file" class="form-control" formControlName="imageProfile">
+       </label>
+     </div>
+     <button type="submit" class="btn btn-success" >Sign Up!</button>
+   </form>
     <br>
     <li align="center"><a routerLink="/registrofacebook">Quieres registrarte con facebook?</a></li>
-    </div>
+  <br>
   </div>
+</div>
+   <!--
+        <form  #registroForm="ngForm" (ngSubmit)="onSubmit()" >
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" [(ngModel)]="user.email" class="form-control input-sm" name="email" id="email" required>
+          </div>
+
+          <div class="form-group">
+            <label for="name">Nombre</label>
+            <input type="text" [(ngModel)]="user.name" class="form-control input-sm" name="name" id="name" required>
+          </div>
+
+          <div class="form-group">
+            <label for="sex">Sexo</label>
+            <select [(ngModel)]="user.sex" id="sex" class="form-control input-sm" name="sex" required>
+              <option *ngFor="let i of sex" [ngValue]="i">{{i.value}}</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="city">Ciudad</label>
+            <input type="text" [(ngModel)]="user.city" class="form-control input-sm" name="city" id="city">
+          </div>
+
+
+          <div class="form-group">
+            <label for="birthday">Fecha de nacimiento</label>
+            <input type="date" [(ngModel)]="user.birthday" class="form-control input-sm" name="birthday" id="birthday" required>
+          </div>
+
+          <div class="form-group">
+            <label for="orientation">Busco</label>
+            <select [(ngModel)]="user.orientation" id="orientation" name="orientation" class="form-control input-sm" required>
+              <option *ngFor="let i of orientation" [ngValue]="i">{{i.value}}</option>
+            </select>
+          </div>
+
+
+          <div class="form-group">
+            <label for="password">Contraseña</label>
+            <input type="password" [(ngModel)]="user.password" class="form-control input-sm" name="password" id="password" required>
+          </div>
+
+          <div class="form-group">
+            <label for="password">Confirmar Contraseña</label>
+            <input type="password" [(ngModel)]="aux.password2" class="form-control input-sm" name="password2" id="password2" required>
+          </div>
+
+          <div class="form-group">
+            <label for="imageProfile">Imagen de perfil (puedes añadirla más tarde)</label>
+            <input type="file" [(ngModel)]="user.imageProfile" class="form-control input-sm" name="imageProfile" id="imageProfile">
+          </div>
+
+          <button type="submit" class="btn btn-success" >Registrate</button>
+        </form>-->
+
 
