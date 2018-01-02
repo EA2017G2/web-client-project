@@ -24,7 +24,6 @@ export class UserService {
     // return of(USERS);   of(USERS) retorna un Observable<User[]>
     // q emite un single value, el array de users desde el body del HTTP response
   }
-
   register(user: User): Observable<User> {
     console.log('data: ', user);
     const url = `${this.apiURL}/signup`;
@@ -40,18 +39,26 @@ export class UserService {
     this.us.imageProfile = null;
     this.us.orientation = 'both';
     this.us.sex = 'sex';*/
-
     console.log('this.user', user);
-
     return this.http.post<User>(url, user, {headers: this.headers})
       .catch(this.handleError) ;
   }
   login(user: User): Observable<User> {
     const url = `${this.apiURL}/signin`;
-    console.log(url);
-    console.log('headers', this.headers);
+   // console.log(url);
+   // console.log('headers', this.headers);
     console.log('this.user', user);
     return this.http.post<User>(url, user, {headers: this.headers})
+      .catch(this.handleError);
+  }
+  profile(): Observable<User> {
+    const url = `${this.apiURL}/profile`;
+    console.log(url);
+    console.log('headerProfile1:' + this.headers);
+    return this.http.get(url, {headers: this.headers})
+      .map(res => {
+        console.log('headerProfile2:' + this.headers);
+      })
       .catch(this.handleError);
   }
 
