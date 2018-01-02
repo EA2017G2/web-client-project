@@ -3,7 +3,7 @@ import {Router} from '@angular/router';
 import {User} from '../../../../ionic-app-project/src/pages/user';
 import { UserService} from '../services/user.service';
 import { FacebookService, InitParams, LoginResponse } from 'ngx-facebook';
-
+import { HttpClient } from '@angular/common/http';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html'
@@ -32,7 +32,7 @@ export class LoginComponent {
   onSubmit() {
     this.submitted = true;
     this.userService.login(this.user).subscribe( res => {
-     //console.log('Res: ' + res.token);
+
       localStorage.setItem('token', res.token);
       this.router.navigate(['/main'], {queryParams: {token: res.token}});
     }, error => {
