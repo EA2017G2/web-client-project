@@ -30,13 +30,13 @@ export class MainComponent implements OnInit {
    // console.log('Min Component con Token', this.token);*/
     this.userService.profile().subscribe(res => {
       this.user.name = res.name;
-    console.log('Welcome to :', this.user.name);
-      }, error => {
-        console.log('Error al mostrar Perfil de User:' + error);
-      });
-      }
-      /* ngOnDestroy() {
-    this.sub.unsubscribe();
-  }*/
+      console.log('Welcome to :', this.user.name);
+    }, error => {
+      console.log('Error al mostrar Perfil de User:' + error);
+    });
+  }
+  /* ngOnDestroy() {
+this.sub.unsubscribe();
+}*/
 
 }

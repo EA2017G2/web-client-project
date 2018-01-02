@@ -6,7 +6,7 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/catch';
 
-import {User} from '../../../../ionic-app-project/src/pages/user';
+import {User} from '../user';
 
 
 @Injectable()
@@ -29,24 +29,24 @@ export class UserService {
     const url = `${this.apiURL}/signup`;
     console.log(url);
     console.log('headers', this.headers);
-/*  this.us = new User();
-    this.us.email = 'email13';
-    this.us.name = 'name';
-    this.us.token = 'token';
-    this.us.password = 'password';
-    this.us.birthday = new Date();
-    this.us.city = 'city';
-    this.us.imageProfile = null;
-    this.us.orientation = 'both';
-    this.us.sex = 'sex';*/
+    /*  this.us = new User();
+        this.us.email = 'email13';
+        this.us.name = 'name';
+        this.us.token = 'token';
+        this.us.password = 'password';
+        this.us.birthday = new Date();
+        this.us.city = 'city';
+        this.us.imageProfile = null;
+        this.us.orientation = 'both';
+        this.us.sex = 'sex';*/
     console.log('this.user', user);
     return this.http.post<User>(url, user, {headers: this.headers})
       .catch(this.handleError) ;
   }
   login(user: User): Observable<User> {
     const url = `${this.apiURL}/signin`;
-   // console.log(url);
-   // console.log('headers', this.headers);
+    // console.log(url);
+    // console.log('headers', this.headers);
     console.log('this.user', user);
     return this.http.post<User>(url, user, {headers: this.headers})
       .catch(this.handleError);
