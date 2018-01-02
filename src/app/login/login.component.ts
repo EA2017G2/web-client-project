@@ -22,7 +22,7 @@ export class LoginComponent {
   onSubmit() {
     this.submitted = true;
     this.userService.login(this.user).subscribe( res => {
-     //console.log('Res: ' + res.token);
+     // console.log('Res: ' + res.token);
       localStorage.setItem('token', res.token);
       this.router.navigate(['/main'], {queryParams: {token: res.token}});
     }, error => {

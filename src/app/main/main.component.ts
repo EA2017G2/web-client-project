@@ -15,7 +15,7 @@ export class MainComponent implements OnInit {
 
   constructor (
     private route: ActivatedRoute, private userService: UserService) {
-    this.user = new User();
+   // this.user = new User();
   }
 
 
@@ -29,8 +29,8 @@ export class MainComponent implements OnInit {
       });
    // console.log('Min Component con Token', this.token);*/
     this.userService.profile().subscribe(res => {
-      this.user.name = res.name;
-    console.log('Welcome to :', this.user.name);
+      this.user = res[0];
+    console.log('Welcome to :', this.user);
       }, error => {
         console.log('Error al mostrar Perfil de User:' + error);
       });
