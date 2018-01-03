@@ -29,8 +29,7 @@ export class MainComponent implements OnInit {
         console.log('Error al mostrar Perfil de User:' + error);
       });
       }
-      /* ngOnDestroy() {
-    this.sub.unsubscribe();
-  }*/
-
+  /* ngOnDestroy() {
+this.sub.unsubscribe();
+}*/
 }
