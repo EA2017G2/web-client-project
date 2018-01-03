@@ -21,13 +21,7 @@ export class MainComponent implements OnInit {
 
   ngOnInit() {
     console.log('inside Profile component');
-    /*this.sub = this.route
-      .queryParams
-      .subscribe(params => {
-        // Defaults to 0 if no query param provided.
-      //  this.token = +params['token'] || 0;
-      });
-   // console.log('Min Component con Token', this.token);*/
+
     this.userService.profile().subscribe(res => {
       this.user = res[0];
     console.log('Welcome to :', this.user);
