@@ -13,7 +13,7 @@ export class LoginComponent {
 
   constructor (private http: HttpClient, private router: Router, private userService: UserService, private fb: FacebookService) {
     console.log('Hello user');
-    let initParams: InitParams = {
+  /*  let initParams: InitParams = {
       appId: '141583893225829',
       xfbml: true,
       version: 'v2.8'

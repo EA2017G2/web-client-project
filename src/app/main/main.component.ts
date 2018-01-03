@@ -23,7 +23,8 @@ export class MainComponent implements OnInit {
     console.log('inside Profile component');
 
     this.userService.profile().subscribe(res => {
-      this.user = res[0];
+    this.user = res[0];
+    //  this.user = res;
     console.log('Welcome to :', this.user);
       }, error => {
         console.log('Error al mostrar Perfil de User:' + error);
