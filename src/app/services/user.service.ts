@@ -29,24 +29,24 @@ export class UserService {
     const url = `${this.apiURL}/signup`;
     console.log(url);
     console.log('headers', this.headers);
-/*  this.us = new User();
-    this.us.email = 'email13';
-    this.us.name = 'name';
-    this.us.token = 'token';
-    this.us.password = 'password';
-    this.us.birthday = new Date();
-    this.us.city = 'city';
-    this.us.imageProfile = null;
-    this.us.orientation = 'both';
-    this.us.sex = 'sex';*/
+    /*  this.us = new User();
+        this.us.email = 'email13';
+        this.us.name = 'name';
+        this.us.token = 'token';
+        this.us.password = 'password';
+        this.us.birthday = new Date();
+        this.us.city = 'city';
+        this.us.imageProfile = null;
+        this.us.orientation = 'both';
+        this.us.sex = 'sex';*/
     console.log('this.user', user);
     return this.http.post<User>(url, user, {headers: this.headers})
       .catch(this.handleError) ;
   }
   login(user: User): Observable<User> {
     const url = `${this.apiURL}/signin`;
-   // console.log(url);
-   // console.log('headers', this.headers);
+    // console.log(url);
+    // console.log('headers', this.headers);
     console.log('this.user', user);
     return this.http.post<User>(url, user, {headers: this.headers})
       .catch(this.handleError);
@@ -54,10 +54,10 @@ export class UserService {
   profile(): Observable<User> {
     const url = `${this.apiURL}/profile`;
     console.log(url);
-    console.log('headerProfile1:' + this.headers);
-    return this.http.get(url, {headers: this.headers})
+    console.log('headerProfile1:', this.headers);
+    return this.http.get<User>(url, {headers: this.headers})
       .map(res => {
-        console.log('headerProfile2:' + this.headers);
+        console.log('headerProfile2:' , this.headers);
       })
       .catch(this.handleError);
   }

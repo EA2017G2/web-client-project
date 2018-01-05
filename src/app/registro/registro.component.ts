@@ -5,7 +5,7 @@ import {Router} from '@angular/router';
 import {AuthService } from '../auth/authService';
 import { UserService } from '../services/user.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import {User} from '../user';
+import {User} from '../../../../ionic-app-project/src/pages/user';
 
 @Component({
   selector: 'app-registro',
@@ -68,7 +68,7 @@ export class RegistroComponent implements OnInit {
     if (this.prodForm.value.password === this.prodForm.value.password2) {
       console.log('!!!!!!!!!!!!!!!!!!onSubmit - Sign Up!!!!', this.prodForm.value);
       this.userService.register(this.prodForm.value).subscribe(res => {
-         // console.log('Res: ' + res.token);
+          console.log('Res: ' + res.token);
         localStorage.setItem('token', res.token);
         this.router.navigate(['/main'], {queryParams: {token: res.token}});
       }, error => {
@@ -79,4 +79,7 @@ export class RegistroComponent implements OnInit {
     }
       }
 
+      registroFacebook(){
+
+      }
 }

@@ -2,6 +2,7 @@ import { Injectable} from '@angular/core';
 import { HttpRequest, HttpHandler, HttpEvent, HttpInterceptor } from '@angular/common/http';
 import { AuthService } from './authService';
 import { Observable } from 'rxjs/Observable';
+import {headersToString} from "selenium-webdriver/http";
 
 @Injectable()
 export class TokenInterceptor implements HttpInterceptor {
@@ -11,18 +12,17 @@ export class TokenInterceptor implements HttpInterceptor {
    intercept(request: HttpRequest<any>, next: HttpHandler):
   Observable<HttpEvent<any>> {
 
-   // console.log('INTERCEPT!!!!!! ');
+    console.log('INTERCEPT!!!!!! ');
     // Get the auth header from the service
     let authHeader = this.auth.getToken();
-   // console.log('authHeader', authHeader);
-
-    if (authHeader === null) {
+    console.log('authHeader', authHeader);
+     // Clone the request to add the new header
+     if (authHeader === null) {
         authHeader = 'MAGIC_TOKEN';
      }
-     // Clone the request to add the new header
      const authReq = request.clone({
        setHeaders: {
-         Authorization: `Bearer ${authHeader}`
+         Authorization: `Bearer ${this.auth.getToken()}`
        }
        // headers: request.headers.set('Authorization', authHeader)
      });

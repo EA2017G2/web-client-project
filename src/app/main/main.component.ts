@@ -15,28 +15,22 @@ export class MainComponent implements OnInit {
 
   constructor (
     private route: ActivatedRoute, private userService: UserService) {
-    this.user = new User();
+   // this.user = new User();
   }
 
 
   ngOnInit() {
     console.log('inside Profile component');
-    /*this.sub = this.route
-      .queryParams
-      .subscribe(params => {
-        // Defaults to 0 if no query param provided.
-      //  this.token = +params['token'] || 0;
-      });
-   // console.log('Min Component con Token', this.token);*/
+
     this.userService.profile().subscribe(res => {
-      this.user.name = res.name;
-    console.log('Welcome to :', this.user.name);
+    this.user = res[0];
+    //  this.user = res;
+    console.log('Welcome to :', this.user);
       }, error => {
         console.log('Error al mostrar Perfil de User:' + error);
       });
       }
-      /* ngOnDestroy() {
-    this.sub.unsubscribe();
-  }*/
-
+  /* ngOnDestroy() {
+this.sub.unsubscribe();
+}*/
 }
