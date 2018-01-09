@@ -10,9 +10,11 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptor } from './auth/tokenInterceptor';
 import { AuthService } from './auth/authService';
 import {IndexComponent} from './index/index.component';
+import {ContactsComponent} from './contacts/contacts.component';
 import {PlayComponent} from './play/play.component';
 import {SettingsComponent} from './settings/settings.component';
 import {LoginComponent} from './login/login.component';
+import {PicturesComponent} from './pictures/pictures.component';
 import {ChatComponent} from './chat/chat.component';
 import {ProfileComponent} from './profile/profile.component';
 import {RegistroComponent} from './registro/registro.component';
@@ -25,9 +27,11 @@ const appRoutes: Routes = [
   {path: 'index', component: IndexComponent},
   {path: 'play', component: PlayComponent},
   {path: 'login', component: LoginComponent},
-  {path: 'forgetpassword', component: ForgetPasswordComponent},
+  {path: 'contacts', component: ContactsComponent},
+  {path: 'forgetPassword', component: ForgetPasswordComponent},
   {path: 'settings', component: SettingsComponent},
   {path: 'chat', component: ChatComponent},
+  {path: 'pictures', component: PicturesComponent},
   {path: 'registro', component: RegistroComponent},
   {path: 'profile', component: ProfileComponent},
   {path: 'about', component: AboutComponent},
@@ -40,10 +44,12 @@ const appRoutes: Routes = [
     ChatComponent,
     SettingsComponent,
     IndexComponent,
+    ContactsComponent,
     ProfileComponent,
     LoginComponent,
     ForgetPasswordComponent,
     RegistroComponent,
+    PicturesComponent,
     MainComponent,
     AboutComponent
   ],

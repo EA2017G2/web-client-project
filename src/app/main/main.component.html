@@ -1,34 +1,84 @@
 <!DOCTYPE html>
-<html>
-<title>W3.CSS Template</title>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<html lang="en">
 <head>
+  <!-- Theme Made By www.w3schools.com - No Copyright -->
+  <title>Bootstrap Theme Simply Me</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <style>
+    body {
+      font: 20px Montserrat, sans-serif;
+      line-height: 1.8;
+      color: #f5f6f7;
+    }
+    p {font-size: 16px;}
+    .margin {margin-bottom: 45px;}
+    .bg-1 {
+      background-color: #1abc9c; /* Green */
+      color: #ffffff;
+    }
+    .bg-2 {
+      background-color: #474e5d; /* Dark Blue */
+      color: #ffffff;
+    }
+    .bg-3 {
+      background-color: #ffffff; /* White */
+      color: #555555;
+    }
+    .bg-4 {
+      background-color: #2f2f2f; /* Black Gray */
+      color: #fff;
+    }
+    .container-fluid {
+      padding-top: 70px;
+      padding-bottom: 70px;
+      background-image: url('../../assets/img/lovemain.jpg');
+    }
+
+    .navbar {
+      padding-top: 15px;
+      padding-bottom: 15px;
+      border: 0;
+      border-radius: 0;
+      margin-bottom: 0;
+      font-size: 12px;
+      letter-spacing: 5px;
+    }
+    .navbar-nav  li a:hover {
+      color: #1abc9c !important;
+    }
+  </style>
 </head>
 <body>
 
+<!-- First Container -->
+<div class="container-fluid bg-1 text-center">
+  <h1 class="margin">ARE YOU READY TO FIND LOVE?</h1>
 
-<!-- Third Parallax Image with Portfolio Text -->
-<div class="bgimg-3 w3-display-container w3-opacity-min">
-  <br />
-  <br />
-  <h1 class="w3-xxlarge w3-text-black w3-wide" align="center"> ARE YOU READY TO FIND LOVE? </h1>
-  <body>
-  <div class="btn-group btn-group-justified">
-    <a href="#" routerLink="/profile" class="btn btn-success">PROFILE</a>
-    <a href="#" routerLink="/settings" class="btn btn-primary">SETTINGS</a>
-    <a href="#" routerLink="/play" class="btn btn-danger">READY</a>
-  </div>
-  </body>
+
+<br><br><br>
+
+<!-- Second Container -->
+
+  <a href="#" routerLink="/profile" class="btn btn-default btn-lg">
+    <span class="glyphicon glyphicon-user"></span> Your profile
+  </a>
+  <a href="#" routerLink="/contacts" class="btn btn-default btn-lg">
+    <span class="glyphicon glyphicon-heart"></span> Your contacts
+  </a>
+  <a href="#" routerLink="/about" class="btn btn-default btn-lg">
+    <span class="glyphicon glyphicon-question-sign"></span> About us
+  </a>
+
+  <br><br><br><br><br>
+  <br><br><br><br>
+
+
+
 </div>
-
 </body>
 </html>
-
-

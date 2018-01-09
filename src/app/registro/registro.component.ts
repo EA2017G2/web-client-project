@@ -32,7 +32,7 @@ export class RegistroComponent implements OnInit {
     password2
   }*/
   sex = [
-    'hombre', 'mujer', 'otro'];
+    'man', 'woman', 'other'];
   orientation = [
     'hombres', 'mujeres', 'ambos'];
 
@@ -70,7 +70,7 @@ export class RegistroComponent implements OnInit {
       this.userService.register(this.prodForm.value).subscribe(res => {
           console.log('Res: ' + res.token);
         localStorage.setItem('token', res.token);
-        this.router.navigate(['/main'], {queryParams: {token: res.token}});
+        this.router.navigate(['/profile'], {queryParams: {token: res.token}});
       }, error => {
        console.log('Ha habido un error al registrarse:' + error);
       });
