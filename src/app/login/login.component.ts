@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Router} from '@angular/router';
-import {User} from '../../../../ionic-app-project/src/pages/user';
+import {User} from '../user';
 import { UserService} from '../services/user.service';
 import { FacebookService, InitParams, LoginResponse } from 'ngx-facebook';
 @Component({
