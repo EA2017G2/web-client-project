@@ -87,9 +87,8 @@
       <img src="assets/img/girl4.jpg" class="img-responsive margin" style="width:100%" alt="Image">
     </div>
   </div>
-  <a href="#" class="btn btn-default btn-lg">
-    <span class="glyphicon glyphicon-camera"></span> Add new
-  </a>
+  <input type="file" #fileInput placeholder="Upload file..." />
+  <button type="button" (click)="upload()">Add new</button>
   <a href="#" class="btn btn-default btn-lg">
     <span class="glyphicon glyphicon-erase"></span> Delete
   </a>
