@@ -18,7 +18,7 @@ export class UserService {
   constructor(private http: HttpClient) {}
 
   getUsers(): Observable<User[]> {
-    console.log()
+    console.log();
     return this.http.get<User[]>(this.apiURL)
       .catch(this.handleError);
     // return of(USERS);   of(USERS) retorna un Observable<User[]>
@@ -58,6 +58,7 @@ export class UserService {
     return this.http.get<User>(url, {headers: this.headers})
       .map(res => {
         console.log('headerProfile2:' , this.headers);
+        return res;
       })
       .catch(this.handleError);
   }
