@@ -139,6 +139,15 @@
 </div>
 
 
+
+<form (submit)="upload(formData)" #formData="ngForm">
+  <div class="form-group">
+    <label for="image">Image:</label><input type="file" name='image' class="form-control" id="image" ngModel>
+  </div>
+  <button type="submit" class="btn btn-danger">Add</button>
+</form>
+
+
 <!-- Footer -->
 <footer class="container-fluid bg-4 text-center">
   <p>LoveShot S.L.</p>

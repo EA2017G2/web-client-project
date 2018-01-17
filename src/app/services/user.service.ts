@@ -63,6 +63,33 @@ export class UserService {
       .catch(this.handleError);
   }
 
+  addPic(pic): Observable<User> {
+    const url = `${this.apiURL}/addPic`;
+    console.log(url);
+    console.log('headerProfile1:', this.headers);
+    console.log(pic);
+    return this.http.post<User>(url, pic, {headers: this.headers})
+      .map(res => {
+        console.log('headerProfile2:' , this.headers);
+        return res;
+      })
+      .catch(this.handleError);
+  }
+/*
+  addPic(picture): Observable<User> {
+    const url = `${this.apiURL}/newPic`;
+    console.log(url);
+    console.log('headerProfile1:', this.headers);
+    return this.http.post(url, picture, {headers: this.headers})
+      .map(pic => {
+        console.log('headerProfile2:' , this.headers);
+        return pic;
+      });
+  }
+  */
+
+
+
 
 
   private handleError(error: any): Promise<any> { // errores del http
