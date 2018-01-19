@@ -12,13 +12,14 @@ import {User} from '../user';
 @Injectable()
 export class UserService {
   private apiURL = 'http://localhost:3000/api/users';
+  private apiUpdates = 'http://localhost:3000/api/users/update';
   private headers = new HttpHeaders({'Content-Type': 'application/json'});
 
   us: User;
   constructor(private http: HttpClient) {}
 
   getUsers(): Observable<User[]> {
-    console.log()
+    console.log();
     return this.http.get<User[]>(this.apiURL)
       .catch(this.handleError);
     // return of(USERS);   of(USERS) retorna un Observable<User[]>
@@ -62,7 +63,25 @@ export class UserService {
       .catch(this.handleError);
   }
 
+  updateName(user: User): Observable<User[]> {
+    console.log(user);
+    const url = `${this.apiUpdates}/${user.name}`;
+    console.log(url);
+    return this.http
+      .put(url, JSON.stringify(user), {headers: this.headers})
+      .map(response => response)
+      .catch(this.handleError);
+  }
 
+  updateCity(user: User): Observable<User[]> {
+    console.log(user);
+    const url = `${this.apiUpdates}/${user.city}`;
+    console.log(url);
+    return this.http
+      .put(url, JSON.stringify(user), {headers: this.headers})
+      .map(response => response)
+      .catch(this.handleError);
+  }
 
   private handleError(error: any): Promise<any> { // errores del http
     console.error('An error occurred', error); // for demo purposes only
