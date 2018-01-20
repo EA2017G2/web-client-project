@@ -75,6 +75,42 @@ export class UserService {
       })
       .catch(this.handleError);
   }
+
+  updateUsername(username): Observable<User> {
+    console.log(username);
+    const url = `${this.apiURL}/updateUsername`;
+    console.log(url);
+    console.log('headerProfile1:', this.headers);
+    return this.http.post<User>(url, {username : username.toString()}, {headers: this.headers})
+      .map(res => {
+        return res;
+      })
+      .catch(this.handleError);
+  }
+
+  updateCity(city): Observable<User> {
+    console.log(city);
+    const url = `${this.apiURL}/updateCity`;
+    console.log(url);
+    console.log('headerProfile1:', this.headers);
+    return this.http.post<User>(url, {city : city.toString()}, {headers: city.headers})
+      .map(res => {
+        return res;
+      })
+      .catch(this.handleError);
+  }
+
+  updatePassword(password): Observable<User> {
+    console.log(password);
+    const url = `${this.apiURL}/updatePassword`;
+    console.log(url);
+    console.log('headerProfile1:', this.headers);
+    return this.http.post<User>(url, {password : password.toString()}, {headers: this.headers})
+      .map(res => {
+        return res;
+      })
+      .catch(this.handleError);
+  }
 /*
   addPic(picture): Observable<User> {
     const url = `${this.apiURL}/newPic`;
