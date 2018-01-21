@@ -6,5 +6,5 @@ import { Http, Response } from '@angular/http';
   styleUrls: ['./pictures.component.css']
 })
 export class PicturesComponent {
-
+z
 }

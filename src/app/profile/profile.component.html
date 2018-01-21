@@ -18,31 +18,19 @@
   <h1 class="margin">Your profile</h1>
   <img src="assets/img/rusa.jpg" class="img-responsive img-circle margin custom_profile_image" alt="Bird" width="250" height="250">
 
-  <h3 class="margin">Laura</h3>
-
-
-  <div class="">
-    <a href="#" class="btn btn-default btn-lg">
-      <span class="glyphicon glyphicon-user"></span> Change username
-    </a>
-    <br>
-    <input [(ngModel)]="user.username" class="form-control"  placeholder="New username "style="margin-top: 10px;" name="username" id="username" required >
-  </div>
-
+  <h3 class="margin">{{name}}</h3>
+  <input type="text"  name="user" ngModel="user"/>
+  <button type="button" class="btn btn-default btn-lg" (click)="onClick2(user)">Change username</button>
 
   <h3 class="margin">23</h3>
 
-  <h3 class="margin">Barcelona</h3>
+  <h3 class="margin">{{birthday}}</h3>
 
-  <div class="">
-  <a href="#" class="btn btn-default btn-lg">
-    <span class="glyphicon glyphicon-map-marker"></span> Change city
-  </a>
-    <br>
-  <input type="city"  [(ngModel)]="user.city" class="form-control"  placeholder="New city "style="margin-top: 10px;" name="city" id="city" required >
-  </div>
+  <h3 class="margin">{{city}}</h3>
 
 
+  <input type="text" placeholder="City" ngModel="city"/>
+  <button type="button" class="btn btn-default btn-lg" (click)="onClick3(city)">Change city</button>
 
 </div>
 
@@ -94,9 +82,9 @@
   </a>
   <br><br>
   <h3 class="margin">I'm looking for</h3>
-  <!--<select class="form-control" formControlName="sex">-->
-    <!--<option *ngFor="let se of sex" [value]="se">{{se}}</option>-->
-  <!--</select>-->
+  <select class="form-control" formControlName="sex">
+    <option *ngFor="let se of sex" [value]="se">{{se}}</option>
+  </select>
   <br>
   <a href="#" class="btn btn-default btn-lg">
     <span class="glyphicon glyphicon-search"></span> Apply
@@ -104,23 +92,19 @@
 
   <br><br><br>
   <br><br><br>
-
-
-<div class="">
-  <a href="#" class="btn btn-danger btn-lg">
-    <span class="glyphicon glyphicon-lock"></span> Change your password
-  </a>
-  <br>
-  <input type="city"  [(ngModel)]="user.password" class="form-control"  placeholder="New password "style="margin-top: 10px;" name="password" id="password" required >
-</div>
+  <input type="password" #fileInput placeholder="password" ngModel="pass" />
+  <button type="button" class="btn btn-default btn-lg" (click)="onClick4(pass)">Change password</button>
 
 </div>
 
 
 
-
-
-
+<form (submit)="upload(formData)" #formData="ngForm">
+  <div class="form-group">
+    <label for="image">Image:</label><input type="file" name='image' class="form-control" id="image" ngModel>
+  </div>
+  <button type="submit" class="btn btn-danger">Add</button>
+</form>
 
 
 <!-- Footer -->

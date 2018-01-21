@@ -22,7 +22,8 @@ import {MainComponent} from './main/main.component';
 import {AboutComponent} from './about/about.component';
 import {ForgetPasswordComponent} from './forgetPassword/forgetPassword.component';
 import { UserService } from './services/user.service';
-
+import { AddService } from './services/add.service';
+import { FileUploadModule } from 'ng2-file-upload';
 const appRoutes: Routes = [
   {path: 'index', component: IndexComponent},
   {path: 'play', component: PlayComponent},
@@ -59,12 +60,14 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
     HttpClientModule,
     ReactiveFormsModule,
+    FileUploadModule,
     FacebookModule.forRoot()
 
   ],
   providers: [
     AuthService,
     UserService,
+    AddService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,

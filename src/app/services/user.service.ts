@@ -59,29 +59,75 @@ export class UserService {
     return this.http.get<User>(url, {headers: this.headers})
       .map(res => {
         console.log('headerProfile2:' , this.headers);
+        return res;
       })
       .catch(this.handleError);
   }
 
-  updateName(user: User): Observable<User[]> {
-    console.log(user);
-    const url = `${this.apiUpdates}/${user.name}`;
+  addPic(pic): Observable<User> {
+    const url = `${this.apiURL}/addPic`;
     console.log(url);
-    return this.http
-      .put(url, JSON.stringify(user), {headers: this.headers})
-      .map(response => response)
+    console.log('headerProfile1:', this.headers);
+    console.log(pic);
+    return this.http.post<User>(url, pic, {headers: this.headers})
+      .map(res => {
+        console.log('headerProfile2:' , this.headers);
+        return res;
+      })
       .catch(this.handleError);
   }
 
-  updateCity(user: User): Observable<User[]> {
-    console.log(user);
-    const url = `${this.apiUpdates}/${user.city}`;
+  updateUsername(username): Observable<User> {
+    console.log(username);
+    const url = `${this.apiURL}/updateUsername`;
     console.log(url);
-    return this.http
-      .put(url, JSON.stringify(user), {headers: this.headers})
-      .map(response => response)
+    console.log('headerProfile1:', this.headers);
+    return this.http.post<User>(url, {username : username.toString()}, {headers: this.headers})
+      .map(res => {
+        return res;
+      })
       .catch(this.handleError);
   }
+
+  updateCity(city): Observable<User> {
+    console.log(city);
+    const url = `${this.apiURL}/updateCity`;
+    console.log(url);
+    console.log('headerProfile1:', this.headers);
+    return this.http.post<User>(url, {city : city.toString()}, {headers: city.headers})
+      .map(res => {
+        return res;
+      })
+      .catch(this.handleError);
+  }
+
+  updatePassword(password): Observable<User> {
+    console.log(password);
+    const url = `${this.apiURL}/updatePassword`;
+    console.log(url);
+    console.log('headerProfile1:', this.headers);
+    return this.http.post<User>(url, {password : password.toString()}, {headers: this.headers})
+      .map(res => {
+        return res;
+      })
+      .catch(this.handleError);
+  }
+/*
+  addPic(picture): Observable<User> {
+    const url = `${this.apiURL}/newPic`;
+    console.log(url);
+    console.log('headerProfile1:', this.headers);
+    return this.http.post(url, picture, {headers: this.headers})
+      .map(pic => {
+        console.log('headerProfile2:' , this.headers);
+        return pic;
+      });
+  }
+  */
+
+
+
+
 
   private handleError(error: any): Promise<any> { // errores del http
     console.error('An error occurred', error); // for demo purposes only

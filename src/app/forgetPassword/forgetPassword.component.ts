@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {Http} from '@angular/http';
 import 'rxjs/add/operator/map';
 import {Router} from '@angular/router';
+import {HttpClient} from '@angular/common/http';
 
 @Component({
   selector: 'app-forgetpassword',
@@ -15,7 +16,7 @@ export class ForgetPasswordComponent {
     email
   }
 
-  constructor(private http: Http, private router: Router) {
+  constructor(private http: HttpClient, private router: Router) {
     console.log('Hello user');
     this.user = {
       'email': ''
@@ -23,8 +24,8 @@ export class ForgetPasswordComponent {
   }
 
   onSubmit() {
-    this.http.post('http://localhost:3000/api/forgetPassword', this.user).subscribe(res => {
-       alert(res.json().message);
+    this.http.post('http://localhost:3000/api/users/forgetPassword', this.user).subscribe(res => {
+      // alert(res.message);
         this.router.navigate(['/login'], {queryParams: {token: this.token}});
       }, error => {
         console.log('Ha habido un error:' + error);

@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { UserService} from '../services/user.service';
+import {Component, OnInit} from '@angular/core';
+import {UserService} from '../services/user.service';
 import {User} from '../user';
-import { ActivatedRoute} from '@angular/router';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-main',
@@ -12,10 +12,10 @@ export class MainComponent implements OnInit {
   sub: any;
   token: any;
   user: User;
+  profile: any;
 
-  constructor (
-    private route: ActivatedRoute, private userService: UserService) {
-   // this.user = new User();
+  constructor(private route: ActivatedRoute, private userService: UserService) {
+    // this.user = new User();
   }
 
 
@@ -23,13 +23,13 @@ export class MainComponent implements OnInit {
     console.log('inside Profile component');
 
     this.userService.profile().subscribe(res => {
-    this.user = res[0];
-    //  this.user = res;
-    console.log('Welcome to :', this.user);
-      }, error => {
-        console.log('Error al mostrar Perfil de User:' + error);
-      });
-      }
+      this.user = res;
+      console.log(this.user);
+    }, error => {
+      console.log('Error al mostrar Perfil de User:' + error);
+    });
+  }
+
   /* ngOnDestroy() {
 this.sub.unsubscribe();
 }*/
