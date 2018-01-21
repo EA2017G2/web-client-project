@@ -3,12 +3,16 @@ import { Http, Response } from '@angular/http';
 import { UserService } from '../services/user.service';
 import { FileUploader } from 'ng2-file-upload';
 import {User } from '../user';
+
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.css']
 })
+
+
 export class ProfileComponent {
+  sex = ['man', 'woman', 'other'];
   file: any;
   user: User;
   name: any;
@@ -34,18 +38,18 @@ export class ProfileComponent {
     });
   }
 
-  onClick2(username){
-    console.log("usuario: "+ username);
+  onClick2(username) {
+    console.log('usuario: ' + username);
     this.userService.updateUsername(username).subscribe(res => {
     });
   }
-  onClick3(city){
+  onClick3(city) {
     console.log(city);
     this.userService.updateCity(city).subscribe(res => {
     });
   }
 
-  onClick4(password){
+  onClick4(password) {
     console.log(password);
     this.userService.updatePassword(password).subscribe(res => {
     });
@@ -66,7 +70,5 @@ export class ProfileComponent {
       this.file = fileList[0];
     }
   }
-*/
-
-
+  */
 }

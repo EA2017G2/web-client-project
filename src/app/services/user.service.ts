@@ -12,6 +12,7 @@ import {User} from '../user';
 @Injectable()
 export class UserService {
   private apiURL = 'http://localhost:3000/api/users';
+  private apiUpdates = 'http://localhost:3000/api/users/update';
   private headers = new HttpHeaders({'Content-Type': 'application/json'});
 
   us: User;
